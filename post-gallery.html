@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />
+    <meta name="description" content="" />
+
+    <!-- FAVICONS ICON -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+    <!-- PAGE TITLE HERE -->
+    <title>Hotel Mid Town | Gallery</title>
+
+    <!-- MOBILE SPECIFIC -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"><!-- BOOTSTRAP STYLE SHEET -->
+    <link rel="stylesheet" href="css/t-datepicker.min.css"><!-- BOOTSTRAP DATEPICKER STYLE SHEET -->
+    <link rel="stylesheet" href="css/t-datepicker-blue.css"><!-- BOOTSTRAP DATEPICKER STYLE SHEET -->
+    <link rel="stylesheet" href="css/fontawesome/css/font-awesome.min.css" /><!-- FONTAWESOME STYLE SHEET -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css"><!-- OWL CAROUSEL STYLE SHEET -->
+    <link rel="stylesheet" href="css/magnific-popup.min.css"><!-- MAGNIFIC POPUP STYLE SHEET -->
+    <link rel="stylesheet" href="css/loader.min.css"><!-- LOADER STYLE SHEET -->
+    <link rel="stylesheet" href="css/style.css"><!-- MAIN STYLE SHEET -->
+    <link rel="stylesheet" class="skin" href="css/skin/skin-1.css"><!-- THEME COLOR CHANGE STYLE SHEET -->
+    <link rel="stylesheet" href="css/flaticon.min.css"><!-- FLATICON STYLE SHEET -->
+
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-animation: fadeIn 0.5s;
+            animation: fadeIn 0.5s;
+        }
+
+        body {
+            background: linear-gradient(65deg, #000, #000 20%, #639);
+            display: grid;
+            width: 100vw;
+            padding-top: 20px;
+            margin: 0;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                align-content: center;
+                padding: 20px;
+            }
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            min-height: 50px;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+
+        .gallery {
+            display: grid;
+            justify-content: center;
+            grid-gap: 20px;
+            grid-template-columns: repeat(2, 100px) minmax(200px, 800px) repeat(2, 100px);
+            grid-template-rows: repeat(5, 100px);
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-gap: 10px;
+                grid-template-columns: repeat(auto-fit, 50px);
+                grid-template-rows: 300px repeat(auto-fit, 50px);
+            }
+        }
+
+        .gallery__filler {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__filler {
+                display: none;
+            }
+        }
+
+        .gallery__item {
+            cursor: pointer;
+            border-radius: 5px;
+            grid-row: span 1;
+            grid-column: span 1;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .gallery__item:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .gallery__select {
+            display: none;
+        }
+
+        .gallery__select:nth-of-type(1):checked~.gallery .gallery__item:nth-of-type(1) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(1):checked~.gallery .gallery__item:nth-of-type(1):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(1):checked~.gallery .gallery__item:nth-of-type(1) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(2):checked~.gallery .gallery__item:nth-of-type(2) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(2):checked~.gallery .gallery__item:nth-of-type(2):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(2):checked~.gallery .gallery__item:nth-of-type(2) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(3):checked~.gallery .gallery__item:nth-of-type(3) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(3):checked~.gallery .gallery__item:nth-of-type(3):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(3):checked~.gallery .gallery__item:nth-of-type(3) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(4):checked~.gallery .gallery__item:nth-of-type(4) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(4):checked~.gallery .gallery__item:nth-of-type(4):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(4):checked~.gallery .gallery__item:nth-of-type(4) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(5):checked~.gallery .gallery__item:nth-of-type(5) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(5):checked~.gallery .gallery__item:nth-of-type(5):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(5):checked~.gallery .gallery__item:nth-of-type(5) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(6):checked~.gallery .gallery__item:nth-of-type(6) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(6):checked~.gallery .gallery__item:nth-of-type(6):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(6):checked~.gallery .gallery__item:nth-of-type(6) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(7):checked~.gallery .gallery__item:nth-of-type(7) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(7):checked~.gallery .gallery__item:nth-of-type(7):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(7):checked~.gallery .gallery__item:nth-of-type(7) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(8):checked~.gallery .gallery__item:nth-of-type(8) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(8):checked~.gallery .gallery__item:nth-of-type(8):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(8):checked~.gallery .gallery__item:nth-of-type(8) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(9):checked~.gallery .gallery__item:nth-of-type(9) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(9):checked~.gallery .gallery__item:nth-of-type(9):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(9):checked~.gallery .gallery__item:nth-of-type(9) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(10):checked~.gallery .gallery__item:nth-of-type(10) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(10):checked~.gallery .gallery__item:nth-of-type(10):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(10):checked~.gallery .gallery__item:nth-of-type(10) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(11):checked~.gallery .gallery__item:nth-of-type(11) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(11):checked~.gallery .gallery__item:nth-of-type(11):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(11):checked~.gallery .gallery__item:nth-of-type(11) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(12):checked~.gallery .gallery__item:nth-of-type(12) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(12):checked~.gallery .gallery__item:nth-of-type(12):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(12):checked~.gallery .gallery__item:nth-of-type(12) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        .gallery__select:nth-of-type(13):checked~.gallery .gallery__item:nth-of-type(13) {
+            cursor: default;
+            display: grid;
+            align-items: center;
+            grid-row: 1/-1;
+            grid-column: 3;
+        }
+
+        .gallery__select:nth-of-type(13):checked~.gallery .gallery__item:nth-of-type(13):hover {
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .gallery__select:nth-of-type(13):checked~.gallery .gallery__item:nth-of-type(13) {
+                grid-row: 1/-3;
+                grid-column: 1/-1;
+            }
+        }
+
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-align: center;
+            margin: 40px 0 30px 0;
+            padding: 0.5em 0;
+            background: #c19b76;
+            color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(40, 40, 80, 0.10);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+                margin: 24px 0 18px 0;
+                padding: 0.4em 0;
+            }
+        }
+    </style>
+
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,800,800i,900"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=DM+Serif+Text:400,400i&display=swap&subset=latin-ext"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="page-wraper">
+
+        <!-- HEADER START -->
+        <script src="header.js"></script>
+        <!-- HEADER END -->
+
+        <!-- CONTENT START -->
+        <div class="page-content ">
+            <!-- INNER PAGE BANNER -->
+            <div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center"
+                style="background-image:url(images/banner/1.jpg);">
+                <div class="overlay-main bg-black opacity-07"></div>
+                <div class="container">
+                    <div class="wt-bnr-inr-entry">
+                        <div class="banner-title-outer">
+                            <div class="banner-title-name">
+                                <h2 class="text-white  font-80 font-weight-900">Post Gallery</h2>
+                            </div>
+                        </div>
+                        <!-- BREADCRUMB ROW -->
+
+                        <div>
+                            <ul class="wt-breadcrumb breadcrumb-style-2">
+                                <li><a href="javascript:void(0);">Home</a></li>
+                                <li>Post Gallery</li>
+                            </ul>
+                        </div>
+
+                        <!-- BREADCRUMB ROW END -->
+                    </div>
+                </div>
+            </div>
+            <!-- INNER PAGE BANNER END -->
+
+            <!-- SECTION CONTENT START -->
+            <h1 class="text-center">Double Deluxe Room (AC)</h1>
+            <div>
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-ac" id="deluxe-ac-0"
+                    checked="checked" />
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-ac" id="deluxe-ac-1" />
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-ac" id="deluxe-ac-2" />
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-ac" id="deluxe-ac-3" />
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-ac" id="deluxe-ac-4" />
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-ac" id="deluxe-ac-5" />
+                <div class="gallery">
+                    <div class="gallery__filler"></div>
+                    <div class="gallery__filler"></div>
+                    <label class="gallery__item" for="deluxe-ac-0"><img
+                            src="images/rooms2/Double Deluxe Room (AC)/image5.JPG" alt="Deluxe AC 1" /></label>
+                    <label class="gallery__item" for="deluxe-ac-1"><img
+                            src="images/rooms2/Double Deluxe Room (AC)/image2.jpeg" alt="Deluxe AC 2" /></label>
+                    <label class="gallery__item" for="deluxe-ac-2"><img
+                            src="images/rooms2/Double Deluxe Room (AC)/image3.JPG" alt="Deluxe AC 3" /></label>
+                    <label class="gallery__item" for="deluxe-ac-3"><img
+                            src="images/rooms2/Double Deluxe Room (AC)/image4.JPG" alt="Deluxe AC 4" /></label>
+                    <label class="gallery__item" for="deluxe-ac-4"><img
+                            src="images/rooms2/Double Deluxe Room (AC)/image1.jpeg" alt="Deluxe AC 5" /></label>
+                    <label class="gallery__item" for="deluxe-ac-5"><img
+                            src="images/rooms2/Double Deluxe Room (AC)/image6.JPG" alt="Deluxe AC 6" /></label>
+                </div>
+            </div>
+            <h1 class="text-center">Double Deluxe Room (Non- AC)</h1>
+            <div>
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-nonac" id="deluxe-nonac-0"
+                    checked="checked" />
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-nonac" id="deluxe-nonac-1" />
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-nonac" id="deluxe-nonac-2" />
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-nonac" id="deluxe-nonac-3" />
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-nonac" id="deluxe-nonac-4" />
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-nonac" id="deluxe-nonac-5" />
+                <input class="gallery__select" type="radio" name="gallery-select-deluxe-nonac" id="deluxe-nonac-6" />
+                <div class="gallery">
+                    <div class="gallery__filler"></div>
+                    <div class="gallery__filler"></div>
+                    <label class="gallery__item" for="deluxe-nonac-0"><img
+                            src="images/rooms2/Double Deluxe Room (Non- AC)/image7.JPG" alt="Deluxe Non-AC 1" /></label>
+                    <label class="gallery__item" for="deluxe-nonac-1"><img
+                            src="images/rooms2/Double Deluxe Room (Non- AC)/image2.jpeg"
+                            alt="Deluxe Non-AC 2" /></label>
+                    <label class="gallery__item" for="deluxe-nonac-2"><img
+                            src="images/rooms2/Double Deluxe Room (Non- AC)/image3.jpeg"
+                            alt="Deluxe Non-AC 3" /></label>
+                    <label class="gallery__item" for="deluxe-nonac-3"><img
+                            src="images/rooms2/Double Deluxe Room (Non- AC)/image4.JPG" alt="Deluxe Non-AC 4" /></label>
+                    <label class="gallery__item" for="deluxe-nonac-4"><img
+                            src="images/rooms2/Double Deluxe Room (Non- AC)/image5.JPG" alt="Deluxe Non-AC 5" /></label>
+                    <label class="gallery__item" for="deluxe-nonac-5"><img
+                            src="images/rooms2/Double Deluxe Room (Non- AC)/image6.JPG" alt="Deluxe Non-AC 6" /></label>
+                    <label class="gallery__item" for="deluxe-nonac-6"><img
+                            src="images/rooms2/Double Deluxe Room (Non- AC)/image1.jpeg"
+                            alt="Deluxe Non-AC 7" /></label>
+                </div>
+            </div>
+
+            <h1 class="text-center">Standard Double Room (Non- AC)</h1>
+            <div>
+                <input class="gallery__select" type="radio" name="gallery-select-standard" id="standard-0"
+                    checked="checked" />
+                <input class="gallery__select" type="radio" name="gallery-select-standard" id="standard-1" />
+                <input class="gallery__select" type="radio" name="gallery-select-standard" id="standard-2" />
+                <input class="gallery__select" type="radio" name="gallery-select-standard" id="standard-3" />
+                <input class="gallery__select" type="radio" name="gallery-select-standard" id="standard-4" />
+                <div class="gallery">
+                    <div class="gallery__filler"></div>
+                    <div class="gallery__filler"></div>
+                    <label class="gallery__item" for="standard-0"><img
+                            src="images/rooms2/Standard Double Room (Non- AC)/image5.JPG"
+                            alt="Standard Room 1" /></label>
+                    <label class="gallery__item" for="standard-1"><img
+                            src="images/rooms2/Standard Double Room (Non- AC)/image1.jpeg"
+                            alt="Standard Room 2" /></label>
+                    <label class="gallery__item" for="standard-2"><img
+                            src="images/rooms2/Standard Double Room (Non- AC)/image3.jpeg"
+                            alt="Standard Room 3" /></label>
+                    <label class="gallery__item" for="standard-3"><img
+                            src="images/rooms2/Standard Double Room (Non- AC)/image4.JPG"
+                            alt="Standard Room 4" /></label>
+                    <label class="gallery__item" for="standard-4"><img
+                            src="images/rooms2/Standard Double Room (Non- AC)/image2.jpeg"
+                            alt="Standard Room 5" /></label>
+                </div>
+            </div>
+
+            <h1 class="text-center">Triple Deluxe Room (AC)</h1>
+            <div>
+                <input class="gallery__select" type="radio" name="gallery-select-triple-ac" id="triple-ac-0"
+                    checked="checked" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-ac" id="triple-ac-1" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-ac" id="triple-ac-2" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-ac" id="triple-ac-3" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-ac" id="triple-ac-4" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-ac" id="triple-ac-5" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-ac" id="triple-ac-6" />
+                <div class="gallery">
+                    <div class="gallery__filler"></div>
+                    <div class="gallery__filler"></div>
+                    <label class="gallery__item" for="triple-ac-0"><img
+                            src="images/rooms2/Triple Deluxe Room ( AC)/image4.jpeg" alt="Triple AC 1" /></label>
+                    <label class="gallery__item" for="triple-ac-1"><img
+                            src="images/rooms2/Triple Deluxe Room ( AC)/image2.jpeg" alt="Triple AC 2" /></label>
+                    <label class="gallery__item" for="triple-ac-2"><img
+                            src="images/rooms2/Triple Deluxe Room ( AC)/image3.jpeg" alt="Triple AC 3" /></label>
+                    <label class="gallery__item" for="triple-ac-3"><img
+                            src="images/rooms2/Triple Deluxe Room ( AC)/image1.jpeg" alt="Triple AC 4" /></label>
+                    <label class="gallery__item" for="triple-ac-4"><img
+                            src="images/rooms2/Triple Deluxe Room ( AC)/image5.jpeg" alt="Triple AC 5" /></label>
+                    <label class="gallery__item" for="triple-ac-5"><img
+                            src="images/rooms2/Triple Deluxe Room ( AC)/image6.jpeg" alt="Triple AC 6" /></label>
+                    <label class="gallery__item" for="triple-ac-6"><img
+                            src="images/rooms2/Triple Deluxe Room ( AC)/image7.jpeg" alt="Triple AC 7" /></label>
+                </div>
+            </div>
+            <h1 class="text-center">Triple Deluxe Room (Non-AC)</h1>
+            <div>
+                <input class="gallery__select" type="radio" name="gallery-select-triple-nonac" id="triple-nonac-0"
+                    checked="checked" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-nonac" id="triple-nonac-1" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-nonac" id="triple-nonac-2" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-nonac" id="triple-nonac-3" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-nonac" id="triple-nonac-4" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-nonac" id="triple-nonac-5" />
+                <input class="gallery__select" type="radio" name="gallery-select-triple-nonac" id="triple-nonac-6" />
+                <div class="gallery">
+                    <div class="gallery__filler"></div>
+                    <div class="gallery__filler"></div>
+                    <label class="gallery__item" for="triple-nonac-0"><img
+                            src="images/rooms2/Triple Deluxe Room ( Non-AC)/image6.jpeg"
+                            alt="Triple Non-AC 1" /></label>
+                    <label class="gallery__item" for="triple-nonac-1"><img
+                            src="images/rooms2/Triple Deluxe Room ( Non-AC)/image2.jpeg"
+                            alt="Triple Non-AC 2" /></label>
+                    <label class="gallery__item" for="triple-nonac-2"><img
+                            src="images/rooms2/Triple Deluxe Room ( Non-AC)/image3.jpeg"
+                            alt="Triple Non-AC 3" /></label>
+                    <label class="gallery__item" for="triple-nonac-3"><img
+                            src="images/rooms2/Triple Deluxe Room ( Non-AC)/image4.jpeg"
+                            alt="Triple Non-AC 4" /></label>
+                    <label class="gallery__item" for="triple-nonac-4"><img
+                            src="images/rooms2/Triple Deluxe Room ( Non-AC)/image5.jpeg"
+                            alt="Triple Non-AC 5" /></label>
+                    <label class="gallery__item" for="triple-nonac-5"><img
+                            src="images/rooms2/Triple Deluxe Room ( Non-AC)/image1.jpeg"
+                            alt="Triple Non-AC 6" /></label>
+                    <label class="gallery__item" for="triple-nonac-6"><img
+                            src="images/rooms2/Triple Deluxe Room ( Non-AC)/image7.jpeg"
+                            alt="Triple Non-AC 7" /></label>
+                </div>
+            </div>
+
+            <h1 class="text-center">Dormitory</h1>
+            <div>
+                <input class="gallery__select" type="radio" name="gallery-select-dormitory" id="dormitory-0"
+                    checked="checked" />
+                <input class="gallery__select" type="radio" name="gallery-select-dormitory" id="dormitory-1" />
+                <input class="gallery__select" type="radio" name="gallery-select-dormitory" id="dormitory-2" />
+                <input class="gallery__select" type="radio" name="gallery-select-dormitory" id="dormitory-3" />
+                <input class="gallery__select" type="radio" name="gallery-select-dormitory" id="dormitory-4" />
+                <input class="gallery__select" type="radio" name="gallery-select-dormitory" id="dormitory-5" />
+                <div class="gallery">
+                    <div class="gallery__filler"></div>
+                    <div class="gallery__filler"></div>
+                    <label class="gallery__item" for="dormitory-0"><img src="images/rooms2/Dormitory/image5.jpeg"
+                            alt="Dormitory 1" /></label>
+                    <label class="gallery__item" for="dormitory-1"><img src="images/rooms2/Dormitory/image2.jpeg"
+                            alt="Dormitory 2" /></label>
+                    <label class="gallery__item" for="dormitory-2"><img src="images/rooms2/Dormitory/image3.jpg"
+                            alt="Dormitory 3" /></label>
+                    <label class="gallery__item" for="dormitory-3"><img src="images/rooms2/Dormitory/image4.jpeg"
+                            alt="Dormitory 4" /></label>
+                    <label class="gallery__item" for="dormitory-4"><img src="images/rooms2/Dormitory/image1.jpeg"
+                            alt="Dormitory 5" /></label>
+                    <!-- <label class="gallery__item" for="dormitory-5"><img src="images/rooms2/Dormitory/.jpeg"
+                            alt="Dormitory 6" /></label> -->
+                </div>
+            </div>
+
+            <!-- SECTION CONTENT END -->
+
+        </div>
+        <!-- CONTENT END -->
+
+        <!-- FOOTER START -->
+        <script src="footer.js"></script>
+        <!-- FOOTER END -->
+
+        <!-- BUTTON TOP START -->
+        <button class="scroltop"><span class="fa fa-angle-up  relative" id="btn-vibrate"></span></button>
+
+    </div>
+
+    <!-- LOADING AREA START ===== -->
+    <div class="loading-area">
+        <div class="loading-box"></div>
+        <div class="loading-pic">
+            <div class="cssload-thecube">
+                <div class="cssload-cube cssload-c1"></div>
+                <div class="cssload-cube cssload-c2"></div>
+                <div class="cssload-cube cssload-c4"></div>
+                <div class="cssload-cube cssload-c3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- LOADING AREA  END ====== -->
+
+
+
+    <!-- JAVASCRIPT  FILES ========================================= -->
+    <script src="js/jquery-3.7.1.min.js"></script><!-- JQUERY.MIN JS -->
+    <script src="js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+    <script src="js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+    <script src="js/magnific-popup.min.js"></script><!-- MAGNIFIC-POPUP JS -->
+    <script src="js/waypoints.min.js"></script><!-- WAYPOINTS JS -->
+    <script src="js/counterup.min.js"></script><!-- COUNTERUP JS -->
+    <script src="js/waypoints-sticky.min.js"></script><!-- COUNTERUP JS -->
+    <script src="js/isotope.pkgd.min.js"></script><!-- MASONRY  -->
+    <script src="js/imagesloaded.pkgd.min.js"></script><!-- MASONRY  -->
+    <script src="js/owl.carousel.min.js"></script><!-- OWL  SLIDER  -->
+    <script src="js/jquery.owl-filter.js"></script><!-- OWL  SLIDER FIlter -->
+    <script src="js/t-datepicker.min.js"></script>
+    <script src="js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
+
+
+
+</body>
+
+</html>
