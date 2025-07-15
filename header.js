@@ -6,7 +6,7 @@ document.write(`
                         <div class="logo-header">
                             <div class="logo-header-inner logo-header-one">
                                 <a href="index.html">
-                                    <img src="images/logo-light.png" alt="" />
+                                    <img src="images/icons/logos.png" alt="" style="width: 100px;border-radius: 3%;"/>
                                 </a>
                             </div>
                         </div>
@@ -26,20 +26,33 @@ document.write(`
                                 <li class="active">
                                     <a href="index.html">Home</a>
                                 </li>
-                                <li>
-                                    <a href="room-detail.html">Rooms</a>
+                                           <li class="submenu-direction">
+                                    <a href="about.html">About Us</a>
                                     
                                 </li>
                                 <li>
-                                    <a href="post-gallery.html">Gallery</a>
+                                    <a href="index.html#rooms">Rooms</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="dormitory-room.html">Dormitory Room</a></li>
+                                        <li><a href="double-deluxe-room-ac.html">Double Deluxe AC Room</a></li>
+                                        <li><a href="double-deluxe-room-non-ac.html">Double Deluxe Non AC Room</a></li>
+                                        <li><a href="standard-double-room-non-ac.html">Standard Double Non AC Room</a></li>
+                                        <li><a href="triple-deluxe-room-ac.html">Triple Deluxe AC Room</a></li>
+                                        <li><a href="triple-deluxe-room-non-ac.html">Triple Deluxe Non AC Room</a></li>
+                                    </ul> 
                                     
                                 </li>
-                                <li class="submenu-direction">
-                                    <a href="about-1.html">About Us</a>
+                                <li>
+                                    <a href="about.html#services">Services</a>
                                     
                                 </li>
+                                <li>
+                                    <a href="gallery.html">Gallery</a>
+                                    
+                                </li>
+                     
                                 <li class="submenu-direction">
-                                    <a href="contact-1.html">Contact Us</a>
+                                    <a href="contact.html">Contact Us</a>
                                     <!-- <ul class="sub-menu">
                                         <li><a href="accordian.html">Accordian</a></li>
                                         <li><a href="button.html">Button</a></li>
@@ -57,11 +70,11 @@ document.write(`
 
                         <div class="extra-nav">
                             <div class="extra-cell">
-                                <a href="#" class="contact-slide-show text-white"><i class="fa fa-envelope-o"></i></a>
+                                <a href="mailto:hotelmidtowndaringbadi1@gmail.com" class="contact-slide-show text-white"><i class="fa fa-envelope-o"></i></a>
                             </div>
                             <div class="extra-cell">
-                                <a href="javascript:;" class="socialicon_show  text-white">
-                                    <i class="fa fa-share-alt"></i>
+                                <a href="telto:+919337335835" class="socialicon_show  text-white">
+                                    <i class="fa fa-phone"></i>
                                 </a>
                             </div>
                         </div>
