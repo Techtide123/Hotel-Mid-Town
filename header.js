@@ -72,11 +72,12 @@ document.write(`
                             <div class="extra-cell">
                                 <a href="mailto:hotelmidtowndaringbadi1@gmail.com" class="contact-slide-show text-white"><i class="fa fa-envelope-o"></i></a>
                             </div>
-                            <div class="extra-cell">
-                                <a href="telto:+919337335835" class="socialicon_show  text-white">
+                           <div class="extra-cell">
+                                <a href="tel:+919337335835" class="socialicon_show text-white">
                                     <i class="fa fa-phone"></i>
                                 </a>
                             </div>
+
                         </div>
                         <!-- ETRA Nav -->
 
