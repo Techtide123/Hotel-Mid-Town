@@ -81,7 +81,7 @@ document.write(`         <footer class="site-footer footer-large footer-dark	foo
                 <div class="container">
                     <div class="row">
                         <div class="wt-footer-bot-center">
-                            <span class="copyrights-text">© 2025 Hotel Mid Town ||  Designed By <a href=""><img src="https://tripstar.co.in/assets/my-img/logo.png" alt="Trip star" style="width: 60px"/></a></span>
+                            <span class="copyrights-text">© 2025 Hotel Mid Town ||  Designed By <a href="https://tripstar.co.in"><img src="https://tripstar.co.in/assets/my-img/logo.png" alt="Trip star" style="width: 60px"/></a></span>
                         </div>
                     </div>
                 </div>
