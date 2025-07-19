@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-6">
-                                <form class="contact-form cons-contact-form" method="post" action="form-handler.php">
+                                <form class="contact-form cons-contact-form" id="contactForm">
                                     <div class="contact-one m-b30">
 
                                         <!-- TITLE START -->
@@ -136,17 +136,17 @@
 
                                         <div class="form-group">
                                             <input name="username" type="text" required class="form-control"
-                                                placeholder="Name">
+                                                placeholder="Name" id="formName">
                                         </div>
 
                                         <div class="form-group">
                                             <input name="email" type="text" class="form-control" required
-                                                placeholder="Email">
+                                                placeholder="Email" id="formEmail">
                                         </div>
 
                                         <div class="form-group">
                                             <textarea name="message" rows="4" class="form-control " required
-                                                placeholder="Message"></textarea>
+                                                placeholder="Message" id="formMessage"></textarea>
                                         </div>
 
                                         <div class="text-right">
@@ -218,7 +218,64 @@
     <script src="js/jquery.owl-filter.js"></script><!-- OWL  SLIDER FIlter -->
     <script src="js/t-datepicker.min.js"></script>
     <script src="js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
+  <!-- SweetAlert Script -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Show SweetAlert loading
+            swal({
+                title: 'Submitting Form',
+                text: 'Please wait...',
+                buttons: false,
+                closeOnClickOutside: false,
+                closeOnEsc: false,
+                icon: 'info',
+                content: {
+                    element: "img",
+                    attributes: {
+                        src: "sunrise-img/loader.gif", // Make sure loader.gif exists
+                        className: "circular",
+                        style: "width:150px;height:100px;object-fit:cover;"
+
+                    }
+                }
+            });
+
+            const formData = {
+                name: document.getElementById('formName').value,
+                email: document.getElementById('formEmail').value,
+                msg: document.getElementById('formMessage').value
+            };
+
+            fetch('https://bookingjini-all-site-contact-form-backend.onrender.com/api/auth/midtown', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    swal.close(); // Close the loading spinner
+                    swal({
+                        title: 'Success!',
+                        text: 'Form submitted successfully.',
+                        icon: 'success'
+                    });
+                    document.getElementById('contactForm').reset();
+                })
+                .catch(error => {
+                    swal.close(); // Close the loading spinner
+                    swal({
+                        title: 'Error!',
+                        text: 'An error occurred while submitting the form.',
+                        icon: 'error'
+                    });
+                    console.error('Form submission error:', error);
+                });
+        });
+    </script>
 
 
 </body>
