@@ -426,8 +426,8 @@
                                         <div class="form-group clearfix">
                                             <label>In-Out Time</label>
                                             <div class="t-datepicker">
-                                                <div class="t-check-in form-control"></div>
-                                                <div class="t-check-out form-control"></div>
+                                                <div class="t-check-in form-control" id="check-in"></div>
+                                                <div class="t-check-out form-control" id="check-out"></div>
                                             </div>
                                         </div>
                                     </li>
@@ -436,11 +436,15 @@
                                         <div class="form-group">
                                             <label>Room Type</label>
                                             <div class="select-box">
-                                                <select class="form-control" name="room">
+                                                <select class="form-control" name="room" id="room-type">
                                                     <option selected="selected" disabled="disabled">Single room</option>
-                                                    <option value="Single">Single room</option>
-                                                    <option value="Double">Double Room</option>
-                                                    <option value="Deluxe">Deluxe room</option>
+                                                    <option value="Standard Double">Standard Double</option>
+                                                    <option value="Double Deluxe Room AC">Double Deluxe Room AC</option>
+                                                    <option value="Double Deluxe Room Non-Ac">Double Deluxe Room Non-Ac
+                                                    </option>
+                                                    <option value="Triple Deluxe AC">Triple Deluxe AC</option>
+                                                    <option value="Triple Deluxe Non-Ac">Triple Deluxe Non-Ac</option>
+                                                    <option value="Dormitory Room">Dormitory Room</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -450,7 +454,7 @@
                                         <div class="form-group">
                                             <label>Adult</label>
                                             <div class="select-box">
-                                                <select class="form-control" name="No-adult">
+                                                <select class="form-control" name="No-adult" id="adult-count">
                                                     <option selected="selected" disabled="disabled">Adult</option>
                                                     <option value="one">1</option>
                                                     <option value="two">2</option>
@@ -464,8 +468,9 @@
                                         <div class="form-group">
                                             <label>Childrens</label>
                                             <div class="select-box">
-                                                <select class="form-control" name="No-children">
+                                                <select class="form-control" name="No-children" id="children-count">
                                                     <option selected="selected" disabled="disabled">Childrens</option>
+                                                    <option value="one">0</option>
                                                     <option value="one">1</option>
                                                     <option value="two">2</option>
                                                     <option value="three">3</option>
@@ -476,8 +481,10 @@
 
                                     <li class="booking-form-btn-block">
                                         <div class="form-group">
-                                            <button type="submit" class="site-button-secondry btn-half"><span>
-                                                    Book</span><em></em></button>
+                                            <a id="whatsapp-link" target="_blank" class="site-button-secondry btn-half">
+                                                <span>Book</span><em></em>
+                                            </a>
+
                                         </div>
                                     </li>
                                 </ul>
@@ -1272,7 +1279,37 @@
         <!-- FOOTER START -->
         <script src="footer.js"></script>
         <!-- FOOTER END -->
+        <script>
+            document.getElementById("whatsapp-link").addEventListener("click", function (e) {
+                // Prevent default to set the link dynamically
+                e.preventDefault();
 
+                // Get form values
+                const checkIn = document.getElementById("check-in").innerText.trim();
+                const checkOut = document.getElementById("check-out").innerText.trim();
+                const roomType = document.getElementById("room-type").value;
+                const adults = document.getElementById("adult-count").value;
+                const children = document.getElementById("children-count").value;
+
+                // Construct message
+                const message = `Booking Request:
+- Check-In: ${checkIn}
+- Check-Out: ${checkOut}
+- Room Type: ${roomType}
+- Adults: ${adults}
+- Children: ${children}`;
+
+                // Encode message
+                const encodedMessage = encodeURIComponent(message);
+
+                // WhatsApp API link (replace with your number)
+                const phoneNumber = "919337335835"; // e.g., "1234567890" with country code
+                const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+                // Open WhatsApp link
+                window.open(whatsappURL, '_blank');
+            });
+        </script>
 
         <!-- BUTTON TOP START -->
         <button class="scroltop"><span class="fa fa-angle-up  relative" id="btn-vibrate"></span></button>
