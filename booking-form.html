@@ -358,73 +358,45 @@
     </div>
 
     <script>
-        // Copy UPI ID to clipboard
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function () {
-                // Show success feedback
-                const copyBtn = document.getElementById('copyUpiBtn');
-                const originalHTML = copyBtn.innerHTML;
-                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
-                copyBtn.style.background = '#27ae60';
+        // Set minimum dates
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkInDate').setAttribute('min', today);
+        document.getElementById('checkOutDate').setAttribute('min', today);
 
-                // Reset button after 2 seconds
-                setTimeout(() => {
-                    copyBtn.innerHTML = originalHTML;
-                    copyBtn.style.background = '#b6985a';
-                }, 2000);
-            }).catch(function (err) {
-                console.error('Could not copy text: ', err);
-            });
-        }
+        // Add form submission handler
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
 
-        // Set minimum date to today for both date inputs
-        document.addEventListener('DOMContentLoaded', function () {
-            // Add click event for copy UPI button
-            document.getElementById('copyUpiBtn').addEventListener('click', function () {
-                const upiId = document.getElementById('upiId').textContent;
-                copyToClipboard(upiId);
-            });
+            // Get form values
+            const customerName = document.getElementById('customerName').value;
+            const extraCustomerName = document.getElementById('extraCustomerName').value;
+            const comingFrom = document.getElementById('comingFrom').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
 
-            // Set minimum dates
-            const today = new Date().toISOString().split('T')[0];
+            // Format the message for WhatsApp
+            let message = `Hotel Booking Details:%0A%0A`;
+            message += `Customer Name: ${customerName}%0A`;
+            message += `Extra Customer Name: ${extraCustomerName || 'N/A'}%0A`;
+            message += `Coming From: ${comingFrom}%0A`;
+            message += `Phone Number: ${phoneNumber}%0A`;
+            message += `Check In Date: ${checkInDate}%0A`;
+            message += `Check Out Date: ${checkOutDate}%0A`;
+            message += `Room Type: ${document.getElementById('roomType').value}%0A`;
+
+            // Hotel's WhatsApp number
+            const whatsappNumber = '918249724355'; // Replace with actual number
+
+            // Open WhatsApp with the message
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+
+            // Reset form
+            this.reset();
+
+            // Set minimum dates again after reset
             document.getElementById('checkInDate').setAttribute('min', today);
             document.getElementById('checkOutDate').setAttribute('min', today);
-
-            // Add form submission handler
-            document.getElementById('bookingForm').addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                // Get form values
-                const customerName = document.getElementById('customerName').value;
-                const extraCustomerName = document.getElementById('extraCustomerName').value;
-                const comingFrom = document.getElementById('comingFrom').value;
-                const phoneNumber = document.getElementById('phoneNumber').value;
-                const checkInDate = document.getElementById('checkInDate').value;
-                const checkOutDate = document.getElementById('checkOutDate').value;
-
-                // Format the message for WhatsApp
-                let message = `Hotel Booking Details:%0A%0A`;
-                message += `Customer Name: ${customerName}%0A`;
-                message += `Extra Customer Name: ${extraCustomerName || 'N/A'}%0A`;
-                message += `Coming From: ${comingFrom}%0A`;
-                message += `Phone Number: ${phoneNumber}%0A`;
-                message += `Check In Date: ${checkInDate}%0A`;
-                message += `Check Out Date: ${checkOutDate}%0A`;
-                message += `Room Type: ${document.getElementById('roomType').value}%0A`;
-
-                // Hotel's WhatsApp number
-                const whatsappNumber = '918249724355'; // Replace with actual number
-
-                // Open WhatsApp with the message
-                window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-
-                // Reset form
-                this.reset();
-
-                // Set minimum dates again after reset
-                document.getElementById('checkInDate').setAttribute('min', today);
-                document.getElementById('checkOutDate').setAttribute('min', today);
-            });
         });
     </script>
 </body>
